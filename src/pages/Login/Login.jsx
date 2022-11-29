@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import CustomInput from "../../components/CustomInput/CustomInput";
 import "./Login.css";
@@ -8,9 +9,16 @@ export const Login = () => {
   const iniciarSesion = (e) => {
     e.preventDefault();
     const formulario = {};
-    formulario.nombreUsuario = document.getElementById("usuario").value;
-    formulario.contraseña = document.getElementById("contraseña").value;
+    formulario.username = document.getElementById("usuario").value;
+    formulario.pass = document.getElementById("contraseña").value;
     console.log(formulario);
+    fetch("http://localhost:8080/login",{
+      headers:{"Content-Type":"application/json"},
+    mode: 'cors',
+    method:"post",
+    body: JSON.stringify(formulario)
+    }).then(res=> res.json())
+    .then(res=> {console.log(res)})    
   };
   const redireccionRegistro = () => {
     window.location.href = "/registro";

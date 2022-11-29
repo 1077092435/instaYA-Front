@@ -13,6 +13,13 @@ import "../../components/NavbarComp/NavbarComp.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export function ListadoOrdenes() {
+  const buscarguia = (e) =>  {
+      console.log("hola Guia!!")
+      const guia={};
+      guia.id_guia= document.getElementById("trackNumber").value;
+      guia.username="geraldine";
+      console.log(guia);
+  }
   return (
 
     <div>
@@ -76,7 +83,7 @@ export function ListadoOrdenes() {
                <div class="search-bar-field search-bar-btn">
                 <a href="listadoOrdenes">
 
-                  <button class="search-bar-consult" ><img src="../mayorque.png" width="100%" height="100%" alt="Consultar"/></button>
+                  <button class="search-bar-consult" ><img src="../mayorque.png" width="100%" height="100%" alt="Consultar" onClick={buscarguia}/></button>
                 </a>
                </div>
             </div>

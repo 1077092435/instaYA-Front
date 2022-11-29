@@ -6,16 +6,29 @@ export const Registro = () => {
   const registrarse = (e) => {
     e.preventDefault();
     const formulario = {};
-    formulario.nombreUsuario = document.getElementById("nombreUsuario").value;
+    formulario.username = document.getElementById("nombreUsuario").value;
     formulario.email = document.getElementById("email").value;
-    formulario.contraseña = document.getElementById("contraseña").value;
+    formulario.pass = document.getElementById("contraseña").value;
     console.log(formulario);
-  };
+    const respuesta = enviar(formulario);
+    console.log(respuesta);
+  }
   const redireccionLogin = () => {
     window.location.href = "/login";
   };
-  return (
-    <>
+  async function enviar(formulario={}){
+    fetch("http://localhost:8080/registrar",{
+      headers:{"Content-Type":"application/json"},
+    mode: 'cors',
+    method:"post",
+    body: JSON.stringify(formulario)
+    }).then(res=> res.json())
+    .then(res=> {console.log(res)})
+    return res;
+  
+  };
+  
+  return (<>
       {/* <div className="registro-page d-flex container">
                 <section className="m-8">
                     <div className="frase-registro">
@@ -55,11 +68,11 @@ export const Registro = () => {
                         </div>
                     </div>
                 </section>
-            </div> */}
+            </div> */} 
 
       <div className="login-box">
         <a href="/">
-          <h2>Iniciar Sesíon</h2>
+          <h2>Registrase</h2>
         </a>
 
         <form>

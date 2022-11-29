@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {Home} from "./pages/Home/Home";
 import {ListadoOrdenes} from "./pages/listadoOrdenes/listadoOrdenes";
 import {Formulario} from "./pages/registroPaquete/registroPaquete";
+import {Prueba} from "./pages/listadoOrdenes/Prueba";
 
 export const App = () => {
 
@@ -18,6 +19,7 @@ export const App = () => {
             <Route path="/registro" element={<Registro />} />
             <Route path="/listadoOrdenes" element={<ListadoOrdenes />} />
             <Route path="/registro-paquete" element={<Formulario />} />
+            <Route path="/prueba" element={<Prueba/>} />
           </Routes>
         </BrowserRouter>
       </>
