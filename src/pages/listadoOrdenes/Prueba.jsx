@@ -1,4 +1,6 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { Button } from "react-bootstrap";
 const uri="http://localhost:8080/"
 
@@ -31,8 +33,8 @@ export const Prueba =  () => {
     </>
     );
 };
-*/
 
+*/
 
 
 /*
@@ -57,9 +59,11 @@ export const Prueba=()=>{
     );
 }
 */
-/*
+
+
 // login de usuario
-export const Prueba=()=>{
+/*
+export function Prueba(){
     const  login= async (e)=>{
         e.preventDefault();
         const user={};
@@ -83,13 +87,18 @@ export const Prueba=()=>{
             <input type="password" id="pass" />
             <button onClick={login}> enviar</button>
         </form>
+               
         </>
+
+
     )
 
 }
-*/
+/*
 
 
+
+/*
 // registrar una orden
 export const Prueba=()=>{
     const  info_form= async (e)=>{
@@ -99,7 +108,8 @@ export const Prueba=()=>{
         guia.username="alex32api"
         guia.nit=document.getElementById("nit").value;
         guia.fecha=document.getElementById("fecha").value;
-        guia.dir=document.getElementById("dir").value;
+        guia.dir_recogida=document.getElementById("dir_recogida").value;
+        guia.ciudad_recogida=document.getElementById("dir").value;
         guia.largo=document.getElementById("largo").value;
         guia.ancho=document.getElementById("ancho").value;
         guia.alto=document.getElementById("alto").value;
@@ -138,8 +148,12 @@ export const Prueba=()=>{
                     <input type="datetime-local" id="fecha" name="fecha"/>
                 </p>
                 <p>
-                    <label htmlFor="dir">Direccion de Recogida(incluya Ciudad) </label>
+                    <label htmlFor="dir">Direccion de Recogida</label>
                     <input type="text" id="dir" name="dir" />
+                </p>
+                <p>
+                    <label htmlFor="dir_recogida">Ciudad de Recogida </label>
+                    <input type="text" id="dir_recogida" name="dir_recogida" />
                 </p>
                 <br></br>
                 <br></br>
@@ -192,4 +206,55 @@ export const Prueba=()=>{
         </>
 
     )
+}
+*/
+
+
+
+export function Prueba() {
+    const [Guias, setListado] = useState([])
+    const rguias={}
+    useEffect(()=>{
+        const username="Liam";
+        fetch(`http://localhost:8080/guias/todas/?username=${username}`,{
+            headers:{"Content-Type":"application/json"},
+            mode: 'cors',
+            method:"get",
+            }).then(res=> res.json())
+            //.then(res=> {console.log(res.guias.user_guias,typeof(res.guias.user_guias),res.guias.user_guias.length)})
+            .then(res=>{
+                
+                setListado(res.guias.user_guias)
+            })
+
+    },[])
+    
+
+
+    return(
+        <table className="table">
+            <thead>
+            <tr>
+                <th> id </th>
+                <th>fecha</th>
+                <th>estado</th>
+            </tr>
+            </thead>
+            <tbody>
+                {
+                    Guias.map(guia=> <tr key={guia._id}>
+                            <td> {guia._id}</td>
+                            <td> <input type="datetime" value={guia.fecha} readOnly/></td>
+                            <td>{guia.estado})</td>
+                            <td><button type="botton">enviar</button></td>
+
+                        </tr>
+                    )
+                }
+            </tbody>
+
+        </table>
+        
+    )
+
 }
