@@ -29,6 +29,14 @@ export const Login = () => {
   const redireccionRegistro = () => {
     window.location.href = "/registro";
   };
+
+  const user_verification=()=>{
+    if(ReactSession.get("username")){
+        console.log("existe usuario", ReactSession.get("username"))
+        window.location.href = "/listadoOrdenes"
+      }
+  }
+user_verification()
   return (
     <>
       <div className="login-box">

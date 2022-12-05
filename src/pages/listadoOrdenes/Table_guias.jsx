@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { render } from "react-dom";
-import { url_server } from "../server_backend/conexion";
+import { url_server } from "../../components/server_backend/conexion";
+import { ReactSession } from 'react-client-session';
 
-
-export function Table_guias({username}){
+export function Table_guias(){
     const[Guias, setGuias]=useState([])
-    if(!username){
-        username="alex32api"
-    }
-    
+    const username= ReactSession.get("username")
+    const url_server_fornt="http://localhost:5173"
     const load_guias=()=>{
         
         console.log(`${url_server}/`)
@@ -33,14 +30,15 @@ export function Table_guias({username}){
     return(
         <>
         { 
-            <h1>Guia de {username}</h1>
+            <h1>Guias de {username}</h1>
         
         }
-        
+        <div class="container-sm">
+        <div className="p-3 mb-2 bg-white text-dark bg-opacity-75">
         <table  className="table">
         <thead>
             <tr>
-                <th  scope="col"> ID Guia2</th>
+                <th  scope="col"> ID Guia</th>
                 <th  scope="col"> Destinatario </th>
                 <th  scope="col">Fecha </th>
                 <th  scope="col"> Ciudad </th>
@@ -62,7 +60,7 @@ export function Table_guias({username}){
                 <td> {guia.ciudad_recogida} </td>
                 <td> {guia.ciudad_des} </td>
                 <td> {guia.estado} </td>
-                <td><a className="btn btn-primary" role="button" href={url_server+"/guia/buscar/?id_guia="+guia._id+"&username="+username}>ver</a></td>
+                <td><a className="btn btn-primary" role="button" href={url_server_fornt+"/guia/buscar/?id_guia="+guia._id+"&username="+username}>ver</a></td>
                 </tr>
                 )
             
@@ -70,8 +68,8 @@ export function Table_guias({username}){
         </tbody>
 
         </table>
-
-        
+        </div>    
+        </div>
         
         </>
 

@@ -3,15 +3,16 @@ import CustomButton from "../../components/CustomButton/CustomButton";
 import CustomInput from "../../components/CustomInput/CustomInput";
 import "./Registro.css";
 export const Registro = () => {
-  const registrarse = (e) => {
+  const registrarse = async(e) => {
     e.preventDefault();
     const formulario = {};
     formulario.username = document.getElementById("nombreUsuario").value;
     formulario.email = document.getElementById("email").value;
     formulario.pass = document.getElementById("contraseña").value;
     console.log(formulario);
-    const respuesta = enviar(formulario);
+    const respuesta = await enviar(formulario);
     console.log(respuesta);
+    window.location.href = "/login"
   }
   const redireccionLogin = () => {
     window.location.href = "/login";
