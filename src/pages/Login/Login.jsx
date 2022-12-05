@@ -3,7 +3,7 @@ import { useState } from "react";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import CustomInput from "../../components/CustomInput/CustomInput";
 import "./Login.css";
-
+import {ReactSession } from 'react-client-session';
 
 export const Login = () => {
   const iniciarSesion = (e) => {
@@ -18,7 +18,13 @@ export const Login = () => {
     method:"post",
     body: JSON.stringify(formulario)
     }).then(res=> res.json())
-    .then(res=> {console.log(res)})    
+    .then(res=> {
+      if(res.auth==true){
+        console.log("puede iniciar")
+        ReactSession.set("username",formulario.username)
+        window.location.href="/listadoOrdenes"
+      }else{console.log("no puede iniciar")}
+    })    
   };
   const redireccionRegistro = () => {
     window.location.href = "/registro";

@@ -7,8 +7,10 @@ import {Home} from "./pages/Home/Home";
 import {ListadoOrdenes} from "./pages/listadoOrdenes/listadoOrdenes";
 import {Formulario} from "./pages/registroPaquete/registroPaquete";
 import {Prueba} from "./pages/listadoOrdenes/Prueba";
+import {ReactSession } from 'react-client-session';
 
 export const App = () => {
+  ReactSession.setStoreType("cookie");
 
     return (
       <>

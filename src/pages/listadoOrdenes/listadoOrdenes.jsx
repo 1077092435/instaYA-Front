@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import "../../components/NavbarComp/NavbarComp.css"
 import "bootstrap/dist/css/bootstrap.min.css";
+import { ReactSession } from 'react-client-session';
 
 export function ListadoOrdenes() {
   const buscarguia = (e) =>  {
@@ -20,6 +21,19 @@ export function ListadoOrdenes() {
       guia.username="geraldine";
       console.log(guia);
   }
+  const cerrar_session=()=>{
+    ReactSession.remove("username");
+    window.location.href = "/"
+  }
+
+  if(ReactSession.get("username")){
+    console.log("existe usuario", ReactSession.get("username"))
+    
+  }else{
+    window.location.href = "/login"
+    
+  }
+
   return (
 
     <div>
@@ -56,7 +70,11 @@ export function ListadoOrdenes() {
                     Seguimiento de solicitud
                   </Nav.Link>
                 </Nav>
-                
+                <Nav className="justify-content-end">
+                  <Nav.Link onClick={cerrar_session} className="items_menu">
+                    Cerrar sesión
+                  </Nav.Link>
+                </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
           </Container>
@@ -94,6 +112,7 @@ export function ListadoOrdenes() {
             <input type="text" placeholder="Rastrear solicitud..." />
             <button className="btn btn-primary ms-3">Buscar</button>
           </div> */}
+          
           <div className='container px-auto py-5'>
           <table className="table">
             <thead className="table-active">
