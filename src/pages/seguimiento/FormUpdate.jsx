@@ -22,7 +22,7 @@ export  function  FormUpdate (){
             method:"get",
             }).then(res=> res.json())
             .then(res=>{                 
-                    res.guias.user_guias.fecha=res.guias.user_guias.fecha.slice(0,-1)
+                   
                     console.log(res.guias.user_guias.fecha)
                     setXGuias([res.guias.user_guias])
                     

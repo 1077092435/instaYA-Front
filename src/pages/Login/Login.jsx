@@ -4,6 +4,8 @@ import CustomButton from "../../components/CustomButton/CustomButton";
 import CustomInput from "../../components/CustomInput/CustomInput";
 import "./Login.css";
 import {ReactSession } from 'react-client-session';
+import NavbarComp from "../../components/NavbarComp/NavbarComp";
+
 
 export const Login = () => {
   const iniciarSesion = (e) => {
@@ -38,7 +40,10 @@ export const Login = () => {
   }
 user_verification()
   return (
+    
+    
     <>
+      <NavbarComp/>
       <div className="login-box">
         <a href="/">
           <h2>Iniciar Sesíon</h2>

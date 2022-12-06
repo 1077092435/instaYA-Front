@@ -2,6 +2,8 @@ import React from "react";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import CustomInput from "../../components/CustomInput/CustomInput";
 import "./Registro.css";
+import NavbarComp from "../../components/NavbarComp/NavbarComp";
+
 export const Registro = () => {
   const registrarse = async(e) => {
     e.preventDefault();
@@ -30,6 +32,7 @@ export const Registro = () => {
   };
   
   return (<>
+      <NavbarComp/>
       {/* <div className="registro-page d-flex container">
                 <section className="m-8">
                     <div className="frase-registro">

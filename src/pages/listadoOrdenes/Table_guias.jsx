@@ -15,8 +15,10 @@ export function Table_guias(){
             mode: 'cors',
             method:"get",
             }).then(res=> res.json())
-            .then(res=>{                 
-                    setGuias(res.guias.user_guias)                    
+            .then(res=>{
+                if(res.valor!=false){                 
+                    setGuias(res.guias.user_guias)
+            }else{setGuias([])}                   
             }).catch(function (reason){console.log(reason)})
     }
     

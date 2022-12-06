@@ -10,6 +10,7 @@ import {Prueba} from "./pages/listadoOrdenes/Prueba";
 import {ReactSession } from 'react-client-session';
 import { FormAddGuia } from "./pages/registroPaquete/FormAddGuia";
 import { FormUpdate } from "./pages/seguimiento/FormUpdate";
+import { Form_for_ghia } from "./pages/Home/Form_for_guia";
 
 export const App = () => {
   ReactSession.setStoreType("cookie");
@@ -25,6 +26,7 @@ export const App = () => {
             <Route path="/registro-paquete" element={<FormAddGuia />} />
             <Route path="/prueba" element={<Prueba/>} />
             <Route path="/guia/buscar" element={<FormUpdate/>}/>
+            <Route path="/guia/unica/" element={<Form_for_ghia/>}/>
           </Routes>
         </BrowserRouter>
       </>

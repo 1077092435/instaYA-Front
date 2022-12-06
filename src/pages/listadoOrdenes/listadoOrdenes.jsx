@@ -16,15 +16,7 @@ import { NavBarCustomer } from "../../components/NavBarCustomer/NavBarCustome";
 import { Table_guias } from "./Table_guias";
 
 export function ListadoOrdenes() {
-  const buscarguia = (e) =>  {
-      console.log("hola Guia!!")
-      const guia={};
-      guia.id_guia= document.getElementById("trackNumber").value;
-      guia.username="geraldine";
-      console.log(guia);
-  }
- 
-
+  
   if(ReactSession.get("username")){
     console.log("existe usuario", ReactSession.get("username"))
     
@@ -33,6 +25,14 @@ export function ListadoOrdenes() {
     
   }
 
+  function link_guia(){
+    const id=document.getElementById("trackNumber").value
+    if(id.length>20){
+      window.location.href=`/guia/unica/?id=${id}`
+      
+    }
+  }
+  
   return (
     <>
     <div>
@@ -55,10 +55,10 @@ export function ListadoOrdenes() {
                   <input type="text" class="form-control" id="trackNumber" placeholder="Ingresa el # de guía"/>
                </div>
                <div class="search-bar-field search-bar-btn">
-                <a href="listadoOrdenes">
+                
 
-                  <button class="search-bar-consult" ><img src="../mayorque.png" width="100%" height="100%" alt="Consultar" onClick={buscarguia}/></button>
-                </a>
+                  <button class="search-bar-consult" ><img src="../mayorque.png" width="100%" height="100%" alt="Consultar" onClick={link_guia}/></button>
+                
                </div>
             </div>
            

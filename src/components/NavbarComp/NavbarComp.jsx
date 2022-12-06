@@ -13,7 +13,8 @@ const NavbarComp = () => {
   return (
     <div>
       {["md"].map((expand) => (
-        <Navbar key={expand} bg="light" expand={expand} className="mb-3">
+        
+        <Navbar key={expand} bg="light" expand={expand} className="mb-3  navbarInterno">
           <Container fluid>
             <Navbar.Brand href="#" className="LogoInstaya">
               InstaYA
@@ -31,6 +32,9 @@ const NavbarComp = () => {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
+                <Nav.Link href="/" className="items_menu">
+                    inicio
+                  </Nav.Link>
                   <Nav.Link href="/registro" className="items_menu">
                     Registrarse
                   </Nav.Link>
@@ -45,6 +49,7 @@ const NavbarComp = () => {
             </Navbar.Offcanvas>
           </Container>
         </Navbar>
+        
       ))}
     </div>
   );
