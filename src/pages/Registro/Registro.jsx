@@ -3,6 +3,7 @@ import CustomButton from "../../components/CustomButton/CustomButton";
 import CustomInput from "../../components/CustomInput/CustomInput";
 import "./Registro.css";
 import NavbarComp from "../../components/NavbarComp/NavbarComp";
+import { url_server } from "../../components/server_backend/conexion";
 
 export const Registro = () => {
   const registrarse = async(e) => {
@@ -20,7 +21,7 @@ export const Registro = () => {
     window.location.href = "/login";
   };
   async function enviar(formulario={}){
-    fetch("http://localhost:8080/registrar",{
+    fetch(`${url_server}/registrar`,{
       headers:{"Content-Type":"application/json"},
     mode: 'cors',
     method:"post",

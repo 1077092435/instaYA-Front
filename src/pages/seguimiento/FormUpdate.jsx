@@ -65,6 +65,7 @@ export  function  FormUpdate (){
             body:JSON.stringify({guia})
             }).then(res=> res.json())
             .then(res=> {console.log(res)})
+            .then(window.location.href = "/listadoOrdenes")
         
     }
 
